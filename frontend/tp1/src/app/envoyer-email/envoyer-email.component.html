@@ -1,0 +1,54 @@
+<div class="container">
+
+
+
+<h1>📩 Envoyer un Email</h1>
+
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+
+  <!-- Sélection campagne -->
+  <label>Campagne :</label>
+  <select [(ngModel)]="selectedCampagneId" name="campagne" required>
+    <option *ngFor="let c of campagnes" [value]="c.id">{{c.nom}}</option>
+  </select>
+
+  <!-- Type de contenu -->
+  <div>
+    <label>Type de contenu :</label>
+    <input type="radio" name="typeContenu" [(ngModel)]="typeContenu" value="texte" /> Texte uniquement
+    <input type="radio" name="typeContenu" [(ngModel)]="typeContenu" value="piece_jointe" /> Avec pièce jointe
+  </div>
+
+  <!-- Sujet et message -->
+  <label>Sujet :</label>
+  <input type="text" name="sujet" [(ngModel)]="email.sujet" required />
+
+  <label>Message :</label>
+  <textarea name="message" [(ngModel)]="email.message" required></textarea>
+
+  <!-- Upload fichier -->
+  <div *ngIf="typeContenu === 'piece_jointe'">
+    <label>Fichier :</label>
+    <input type="file" (change)="onFileChange($event)" />
+  </div>
+
+  <!-- Envoi immédiat ou programmé -->
+  <div>
+    <label>Type d'envoi :</label>
+    <input type="radio" name="sendNow" [(ngModel)]="sendNow" [value]="true" /> Immédiat
+    <input type="radio" name="sendNow" [(ngModel)]="sendNow" [value]="false" /> Programmé
+  </div>
+
+  <!-- Date d'envoi -->
+  <div *ngIf="!sendNow">
+    <label>Date d'envoi :</label>
+    <input type="datetime-local" name="dateEnvoi" [(ngModel)]="email.dateEnvoi" required />
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Envoyer</button>
+
+ <p *ngIf="successMsg" class="success">{{ successMsg }}</p>
+<p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+
+</form>
+</div>

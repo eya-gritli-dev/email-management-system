@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <label>Sujet :</label>
+  <input type="text" name="subject" [(ngModel)]="email.subject" required />
+
+  <label>Message :</label>
+  <textarea name="text" [(ngModel)]="email.text" required></textarea>
+
+  <button type="submit" [disabled]="!form.valid">Envoyer à tous</button>
+
+  <p *ngIf="successMsg" style="color: green;">{{ successMsg }}</p>
+  <p *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</p>
+</form>

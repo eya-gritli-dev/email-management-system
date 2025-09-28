@@ -1,0 +1,101 @@
+/* reset / base */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+
+/* titre */
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  color: #03069c;
+  font-size: 2rem;
+}
+
+/* conteneur centralisé et responsive (grid) */
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+  max-width: 1200px;   /* empêche l'étirement extrême */
+  margin: 1rem auto;   /* centre horizontalement */
+  align-items: start;
+}
+
+/* carte de graphique */
+.chart-box {
+  background-color: #ffffff;
+  padding: 1.25rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.chart-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.chart-box h3 {
+  text-align: center;
+  color: #0597ec;
+  margin: 0 0 0.75rem 0;
+}
+
+/* zone qui contient le canvas et qui grandit */
+.chart-inner {
+  position: relative;
+  flex: 1;
+  min-height: 260px; /* hauteur minimum pour l'affichage */
+}
+
+/* forcer le canvas à remplir la zone (Chart.js adaptera le rendu) */
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* petites cartes de statut */
+.green {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.red {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* la liste des prochains envois */
+ul.prochains-envois {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 1.5rem;
+  list-style: none;
+}
+
+ul.prochains-envois li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* responsive tweaks */
+@media (max-width: 480px) {
+  .chart-box { padding: 1rem; min-height: 260px; }
+  .chart-inner { min-height: 200px; }
+}

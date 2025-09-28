@@ -1,0 +1,27 @@
+
+  <h2>📥Programmer un mail pour une campagne📧</h2>
+<div style="padding-left: 250px;">
+  <form [formGroup]="form" (ngSubmit)="submit()" enctype="multipart/form-data">
+    <label>Sujet :</label>
+    <input type="text" formControlName="sujet"><br>
+
+    <label>Contenu :</label>
+    <textarea formControlName="contenu"></textarea><br>
+
+    <label>Date Programmée :</label>
+    <input type="datetime-local" formControlName="dateProgramme"><br>
+
+    <label>Nom du fichier :</label>
+    <input type="text" formControlName="nomFichier"><br>
+
+    <label>Fichier (optionnel) :</label>
+    <input type="file" (change)="onFileChange($event)"><br>
+
+    <label>ID Campagne :</label>
+    <input type="number" formControlName="campagneId"><br>
+
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <p *ngIf="message">{{ message }}</p>
+</div>

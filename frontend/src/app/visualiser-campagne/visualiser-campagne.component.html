@@ -1,0 +1,46 @@
+<h1>📊 Liste des Campagnes & Détails 📬</h1>
+<div class="table-container" style="padding-left: 250px;">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Mails</th>
+        <th>Contacts</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let campagne of campagnes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ campagne.nom }}</td>
+        <td>{{ campagne.description }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let mail of campagne.mails">
+              📨 <strong>{{ mail.sujet }}</strong> — {{ mail.message }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let email of campagne.contactsEmails">
+              👤 {{ email }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <button (click)="afficherModification(campagne)">✏️ Modifier</button>
+          <button (click)="supprimerCampagne(campagne.id)">🗑️</button>
+
+          <app-modifier-campagne
+            *ngIf="campagneAModifier && campagneAModifier.id === campagne.id"
+            [campagne]="campagneAModifier"
+            (fermer)="fermerModification($event)">
+          </app-modifier-campagne>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

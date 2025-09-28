@@ -1,0 +1,16 @@
+       <h2>➕ Ajouter un client à une campagne 👤</h2>
+
+ <div style="padding-left: 250px;">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <label>Nom :</label>
+        <input type="text" formControlName="nom"><br>
+        <label>Prénom :</label>
+        <input type="text" formControlName="prenom"><br>
+        <label>Email :</label>
+        <input type="email" formControlName="email"><br>
+        <label>ID Campagne :</label>
+        <input type="number" formControlName="campagneId"><br>
+        <button type="submit">Ajouter</button>
+      </form>
+      <p *ngIf="message">{{ message }}</p>
+    </div>

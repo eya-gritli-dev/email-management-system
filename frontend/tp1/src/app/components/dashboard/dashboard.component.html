@@ -1,0 +1,43 @@
+<h1>📊 Tableau de bord 📈 </h1>
+
+<div *ngIf="stats?.retards > 0" style="max-width:1200px;margin:0.5rem auto;padding:0 1.5rem;">
+  <div class="red">⚠️ {{ stats.retards }} envois programmés sont en retard !</div>
+</div>
+
+<div class="chart-container" *ngIf="chartsReady">
+  <div class="chart-box">
+    <h3>Répartition des Statuts</h3>
+    <div class="chart-inner">
+      <canvas #pieChart baseChart [data]="pieChartData" [type]="pieChartType" [options]="chartOptions"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h3>Emails Programmés par Jour</h3>
+    <div class="chart-inner">
+      <canvas #barChart baseChart [data]="barChartData" [type]="barChartType" [options]="chartOptions"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <h3>Performance par campagne</h3>
+    <div class="chart-inner">
+      <canvas #campagneChart baseChart [data]="campagneChartData" [type]="campagneChartType" [options]="chartOptions"></canvas>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!chartsReady" style="text-align:center;padding:2rem;">
+  <p>Chargement des graphiques...</p>
+</div>
+
+<!-- Prochains envois -->
+<div *ngIf="stats?.prochainsEnvois?.length > 0">
+  <h3 style="text-align:center;margin-top:1rem;">📅 Prochains envois</h3>
+  <ul class="prochains-envois">
+    <li *ngFor="let envoi of stats.prochainsEnvois">
+      <span class="green">{{ envoi.sujet }}</span> — {{ envoi.dateProgramme | date:'short' }}
+      (Campagne: {{ envoi.campagne }})
+    </li>
+  </ul>
+</div>

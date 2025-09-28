@@ -1,0 +1,72 @@
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  color: #03069c;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+form {
+  max-width: 700px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #03069c;
+  font-size: 1.2rem; /* plus grand */
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #03069c;
+  margin-bottom: 20px; /* espace avec le suivant */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #0597ec;
+  box-shadow: 0 0 6px rgba(5, 151, 236, 0.3);
+  outline: none;
+}
+
+button[type="submit"] {
+  margin-top: 15px;
+  padding: 14px 28px;
+  background-color: #03069c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0597ec;
+  transform: translateY(-2px);
+}
+
+p {
+  margin-top: 15px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+/* Garder le padding pour le sidebar */
+.container {
+  padding-left: 250px;
+}

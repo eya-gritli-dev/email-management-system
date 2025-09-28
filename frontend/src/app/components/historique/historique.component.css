@@ -1,0 +1,58 @@
+h1 {
+  text-align: center;
+  margin-top: 1rem;
+  color: #03069c;
+}
+
+/* Conteneur général du tableau (espace à gauche pour la sidebar) */
+.table-container {
+  margin-left: 250px;
+  padding: 2rem;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style du tableau */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th {
+  background-color: #03069c;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-size: 16px;
+}
+
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  font-size: 15px;
+}
+
+/* Couleurs de statut */
+.green {
+  color: green;
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+
+/* Fichier en pièce jointe */
+td.fichier a {
+  color: #03069c;
+  text-decoration: underline;
+}
+
+span {
+  color: #0597ec;
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>➕ Ajouter un Contact 👤</h1>
+
+  <form (ngSubmit)="ajouterOuModifierContact()">
+
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" placeholder="Nom" [(ngModel)]="newContact.nom" name="nom" required />
+
+    <label for="prenom">Prénom</label>
+    <input type="text" id="prenom" placeholder="Prénom" [(ngModel)]="newContact.prenom" name="prenom" />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Email" [(ngModel)]="newContact.email" name="email" required />
+
+    <label for="campagne">Campagne</label>
+    <select id="campagne" [(ngModel)]="newContact.campagneId" name="campagneId" required (change)="onCampagneChange()">
+      <option value="" disabled selected>-- Sélectionner une campagne --</option>
+      <option *ngFor="let c of campagnes" [value]="c.id">{{ c.nom }}</option>
+    </select>
+
+    <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+  </form>
+
+  <div class="message-container">
+    <p *ngIf="message" class="success-message">{{ message }}</p>
+  </div>
+
+  <!-- Affichage des contacts filtrés par campagne -->
+  <div *ngIf="contactsFiltres.length > 0" class="contacts-container">
+    <h2>📋 Contacts de la campagne</h2>
+    <ul>
+      <li *ngFor="let contact of contactsFiltres">
+        <span>{{ contact.nom }} {{ contact.prenom }} ({{ contact.email }})</span>
+        <button class="edit-btn" (click)="editContact(contact)">✏️ Modifier</button>
+        <button class="delete-btn" (click)="supprimerContact(contact.id)">🗑️ Supprimer</button>
+      </li>
+    </ul>
+  </div>
+</div>

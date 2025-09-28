@@ -1,0 +1,18 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <label>À :</label>
+  <input type="email" name="to" [(ngModel)]="email.to" required />
+
+  <label>Sujet :</label>
+  <input type="text" name="subject" [(ngModel)]="email.subject" required />
+
+  <label>Message :</label>
+  <textarea name="text" [(ngModel)]="email.text" required></textarea>
+
+  <label>Fichier :</label>
+  <input type="file" (change)="onFileChange($event)" />
+
+  <button type="submit" [disabled]="!form.valid">Envoyer avec pièce jointe</button>
+
+  <p *ngIf="successMsg" style="color: green;">{{ successMsg }}</p>
+  <p *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</p>
+</form>

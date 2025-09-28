@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  <label>À :</label>
+  <input type="email" name="to" [(ngModel)]="email.to" required />
+
+  <label>Sujet :</label>
+  <input type="text" name="subject" [(ngModel)]="email.subject" required />
+
+  <label>Message :</label>
+  <textarea name="text" [(ngModel)]="email.text" required></textarea>
+  <label>Type d'envoi :</label>
+  <div>
+    <input type="radio" name="envoi" [(ngModel)]="sendNow" [value]="true" /> Immédiat
+    <input type="radio" name="envoi" [(ngModel)]="sendNow" [value]="false" /> Programmée
+  </div>
+
+  <div *ngIf="!sendNow">
+    <label>Date d'envoi :</label>
+    <input type="datetime-local" [(ngModel)]="email.dateEnvoi" name="dateEnvoi" required />
+  </div>
+
+
+  <button type="submit" [disabled]="!form.valid">Envoyer</button>
+
+  <p *ngIf="successMsg" style="color: green;">{{ successMsg }}</p>
+  <p *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</p>
+</form>

@@ -1,0 +1,31 @@
+<h1> 📨 Historique des Emails Programmés📭</h1>
+<div class="table-container">
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Sujet</th>
+      <th>Contenu</th>
+      <th>Date</th>
+      <th>Statut</th>
+      <th>Fichier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let mail of historique; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ mail.sujet }}</td>
+      <td>{{ mail.contenu }}</td>
+      <td>{{ mail.dateEnvoi }}</td>
+      <td>
+<span [ngClass]="mail.statut === 'ENVOYE' ? 'green' : (mail.statut === 'EN_ATTENTE' ? 'orange' : 'red')">
+  {{ mail.statut }}
+</span>
+      </td>
+      <td>
+        <span *ngIf="mail.nomFichier">{{ mail.nomFichier }}</span>
+        <span *ngIf="!mail.nomFichier">—</span>
+      </td>
+    </tr>
+  </tbody>
+</table></div>

@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>📢 Ajouter une campagne 🎯</h1>
+
+  <form (ngSubmit)="ajouterCampagne()">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" placeholder="Nom" [(ngModel)]="newCampagne.nom" name="nom" required />
+
+    <label for="description">Description</label>
+    <input type="text" id="description" placeholder="Description" [(ngModel)]="newCampagne.description" name="description" />
+
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <p *ngIf="message">{{ message }}</p>
+</div>

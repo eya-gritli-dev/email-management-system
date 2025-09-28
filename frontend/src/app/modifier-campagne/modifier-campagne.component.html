@@ -1,0 +1,36 @@
+<div class="modifier-campagne" *ngIf="campagne">
+  <h2>Modifier la campagne</h2>
+
+  <label>
+    Nom :
+    <input [(ngModel)]="campagne.nom" placeholder="Nom de la campagne" />
+  </label>
+
+  <label>
+    Description :
+    <textarea [(ngModel)]="campagne.description" placeholder="Description"></textarea>
+  </label>
+
+  <h3>Clients</h3>
+  <ul>
+    <li *ngFor="let client of clients; let i = index">
+      <input [(ngModel)]="client.nom" placeholder="Nom" />
+      <input [(ngModel)]="client.prenom" placeholder="Prénom" />
+      <input [(ngModel)]="client.email" placeholder="Email" />
+      <button (click)="updateClient(client)">💾 Sauvegarder</button>
+      <button (click)="deleteClient(client.id)">🗑 Supprimer</button>
+    </li>
+  </ul>
+
+  <h3>Mails</h3>
+  <ul>
+    <li *ngFor="let mail of mails; let i = index">
+      <input [(ngModel)]="mail.sujet" placeholder="Sujet" />
+      <textarea [(ngModel)]="mail.message" placeholder="Message"></textarea>
+      <button (click)="updateMail(mail)">💾 Sauvegarder</button>
+    </li>
+  </ul>
+
+  <button (click)="saveCampagne()">💾 Enregistrer la campagne</button>
+  <button (click)="fermer.emit(false)">❌ Annuler</button>
+</div>
